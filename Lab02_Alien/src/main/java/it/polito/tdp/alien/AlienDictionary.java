@@ -15,11 +15,12 @@ public class AlienDictionary {
 	 * Aggiunge nel dizionario una parola con la rispettiva traduzione
 	 * @param w
 	 */
-	public void addWord(Word w) {
-		if (mappaTraduzione.containsKey(w.getAlienWord())) {
-			mappaTraduzione.remove(w.getAlienWord());
+	public void addWord(String alienWord, String translation) {
+		if (mappaTraduzione.containsKey(alienWord)) {
+			mappaTraduzione.remove(alienWord);
 		}
-		mappaTraduzione.put(w.getAlienWord(), w);
+		Word w = new Word(alienWord, translation);
+		mappaTraduzione.put(alienWord, w);
 	}
 	
 	/**
@@ -27,14 +28,10 @@ public class AlienDictionary {
 	 * @param alienWord
 	 * @return
 	 */
-	public Word translateWord(String alienWord) {
-//		if (mappaTraduzione.containsKey(alienWord)) {
-//		return mappaTraduzione.get(alienWord);
-//		} else {
-//			return null;
-//		}	
-		
-		return mappaTraduzione.get(alienWord);
+	public String translateWord(String alienWord) {
+		Word w = mappaTraduzione.get(alienWord);
+		String traduzione = w.getTranslation();
+		return traduzione;
 	}
 
 	public Map<String, Word> getMappaTraduzione() {

@@ -42,21 +42,25 @@ public class FXMLController {
     @FXML
     void doTraslate(ActionEvent event) {
     	String testo =  txtParola.getText().toLowerCase();
-    	String[] campi = testo.split(" ");
-    	if (campi[1]== null) {
-    		campi[1] = " ";
-    	}
-    	Word w = new Word(campi[0], campi[1]);
-    	ad.addWord(w);
-    	txtRisultato.setText("Parola aggiunta con successo");
-    	
-    	if (w.getAlienWord().equals(campi[0]) == true) {
-    		String parolaTradotta = ad.translateWord(campi[0]).toString();
-    		txtRisultato.setText(parolaTradotta);
+    	if( testo.contains(" ")) {
+    		String[] campi = testo.split(" ");
+    		String parolaAliena = campi[0];
+    		String parolaTradotta = campi[1];
+    			if(parolaAliena.matches("[a-z]*") && parolaTradotta.matches("[a-z]*")) {
+    				this.ad.addWord(parolaAliena, parolaTradotta);
+    		    	txtRisultato.setText("Parola aggiunta con successo");
+    			}
+    			else 
+    				txtRisultato.setText("Parola inserita non corretta");
     	}
     	else {
-    		//lblErrore.setText("Parola non presente");
-    	}
+    			if(testo.matches("[a-z]*")) {
+    				String traduzione = this.ad.translateWord(testo);
+    				txtRisultato.setText("Traduzione di " + testo + ": " + traduzione);
+    			}
+    			else 
+    				txtRisultato.setText("Parola inserita non corretta");
+    		}
     }
 
     
