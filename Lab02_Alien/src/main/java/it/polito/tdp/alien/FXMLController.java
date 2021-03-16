@@ -36,7 +36,9 @@ public class FXMLController {
 
     @FXML
     void doReset(ActionEvent event) {
-
+    	txtRisultato.clear();
+    	txtParola.clear();
+    	ad.mappaTraduzione.clear();
     }
 
     @FXML

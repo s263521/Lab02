@@ -10,7 +10,6 @@ public class AlienDictionary {
 	public AlienDictionary() {
 		mappaTraduzione = new HashMap<>();
 	}
-	
 	/**
 	 * Aggiunge nel dizionario una parola con la rispettiva traduzione
 	 * @param w
@@ -22,13 +21,13 @@ public class AlienDictionary {
 		Word w = new Word(alienWord, translation);
 		mappaTraduzione.put(alienWord, w);
 	}
-	
 	/**
 	 * Traduce la parola passata come parametro
 	 * @param alienWord
 	 * @return
 	 */
 	public String translateWord(String alienWord) {
+		
 		Word w = mappaTraduzione.get(alienWord);
 		String traduzione = w.getTranslation();
 		return traduzione;
